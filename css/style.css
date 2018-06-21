@@ -4,8 +4,18 @@
     box-sizing: inherit;
 }
 
+article {
+    /* ORIGINALY THERE WAS NO FONT-SIZE HERE => */
+    font-size: 1px;
+    background: #555;
+}
+
 html {
     box-sizing: border-box;
+    /* ORIGINALY THERE WAS NO BACKGROUND HERE => */
+    background: #000;
+
+
 }
 
 body {
@@ -17,7 +27,10 @@ body {
 
 a {
     text-decoration: none;
-    color: #111;
+    /* color: #111; */
+    color: #FFF;
+    /* ORIGINALY THERE WAS NO BACKGROUND HERE => */
+    background: #555;
 }
 
 a:hover h2 {
