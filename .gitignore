@@ -24,6 +24,6 @@ bower_components/
 .sass-cache
 *.css.map
 build/
-dist/
 
-credits: https://www.youtube.com/watch?v=Oehs2H95a6E
+
+# credits: https://www.youtube.com/watch?v=Oehs2H95a6E

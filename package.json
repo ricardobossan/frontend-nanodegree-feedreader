@@ -19,6 +19,4 @@
   "devDependencies": {
     "browsersync": "0.0.1-security",
     "gulp": "^3.9.1"
-  },
-  "dependencies": {}
-}
+  }}

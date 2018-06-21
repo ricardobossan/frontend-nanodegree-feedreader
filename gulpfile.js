@@ -1,8 +1,7 @@
 /*eslint-env node*/
 var gulp = require('gulp');
 var browsersync = require('browser-sync').create();
-/*var eslint = require('gulp-eslint');
-*/
+
 gulp.task('default', () => {
 	// Reloads browser
 	gulp.watch('./src/**/*.js').on('change', browsersync.reload);
@@ -11,7 +10,7 @@ gulp.task('default', () => {
 	browsersync.init({
 		server: './src',
 		port: 3000,
-		index: './src/index.html',
+		index: 'index.html',
 		ui: false
 	});
 });
