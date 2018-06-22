@@ -108,8 +108,18 @@ $(function() {
 		* the use of Jasmine's beforeEach and asynchronous done() function.
 		*/
 	describe('Initial Entries', () => {
-
-	})
+		beforeEach((done) => {
+			allFeeds.forEach(function(feed) {
+				loadFeed(0, done);
+			});
+		});
+		it('have at least one entry', () => {
+			console.log(document.querySelector('.feed'));
+/*			const feedElem = document.querySelector('.feed');
+*/			const entry = document.querySelectorAll('.entry');
+			expect(entry.length).toBeGreaterThan(0);
+		});
+	});
 	/* TODO: Write a new test suite named "New Feed Selection" */
 
 	/* TODO: Write a test that ensures when a new feed is loaded
