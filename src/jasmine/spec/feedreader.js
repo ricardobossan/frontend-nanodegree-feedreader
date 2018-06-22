@@ -31,14 +31,14 @@ $(function() {
 		* in the allFeeds object and ensures it has a URL defined
 		* and that the URL is not empty.
 		*/
-		describe('contain', () => {
+		describe('have', () => {
 			allFeeds.forEach(function(aFeed){
 				describe(`in this feed`, () => {
-					it('an url', () => {
+					it('an url defined', () => {
 						expect(Object.keys(aFeed)).toContain('url');
 					});
 					it('and that the url is not empty', () => {
-						expect(Object.entries(aFeed)[1]).toContain('url', 'http://');
+						expect(Object.values(aFeed)[1]).toContain('http://');
 					});
 				});
 			});
@@ -49,6 +49,19 @@ $(function() {
 		* in the allFeeds object and ensures it has a name defined
 		* and that the name is not empty.
 		*/
+		describe('have', () => {
+			allFeeds.forEach(function(aFeed){
+				describe(`in this feed`, () => {
+					it('an name defined', () => {
+						expect(Object.keys(aFeed)).toContain('url');
+					});
+					it('and that the name is not empty', () => {
+						expect(Object.values(aFeed)[0]).toEqual(jasmine.any(String));
+					});
+				});
+			});
+		});
+
 	});
 
 
