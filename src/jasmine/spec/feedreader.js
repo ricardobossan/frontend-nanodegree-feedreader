@@ -107,7 +107,9 @@ $(function() {
 		* Remember, loadFeed() is asynchronous so this test will require
 		* the use of Jasmine's beforeEach and asynchronous done() function.
 		*/
+	describe('Initial Entries', () => {
 
+	})
 	/* TODO: Write a new test suite named "New Feed Selection" */
 
 	/* TODO: Write a test that ensures when a new feed is loaded
