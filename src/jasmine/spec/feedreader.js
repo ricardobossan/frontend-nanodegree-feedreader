@@ -72,6 +72,8 @@ $(function() {
 		*/
 	describe('The Menu', () => {
 		const slideClassDiv = document.querySelector('.slide-menu');
+		var menuIcon = document.querySelector('.menu-icon-link');
+		var body = document.querySelector('body');
 		it('is hidden by default', () => {
 			expect(window.getComputedStyle(slideClassDiv).transform).toEqual("matrix(1, 0, 0, 1, -192, 0)");
 			expect(window.getComputedStyle(slideClassDiv).transition).toContain("transform 0.2s");
@@ -81,20 +83,18 @@ $(function() {
 			* should have two expectations: does the menu display when
 			* clicked and does it hide when clicked again.
 			*/
-		it('is either displayed or hidden, when clicked', () => {
-/*			beforeEach(() => {
-*/			var menuIcon = document.querySelector('.menu-icon-link');
+		it('when clicked, is either displayed', () => {
 			menuIcon.click(function() {
-				$('body').toggleClass('menu-hidden');
+				body.toggleClass('menu-hidden');
 			});
-/*			});
-*/			expect(document.querySelector('body').classList.value).toBe("");
-			menuIcon.click(function() {
-				$('body').toggleClass('menu-hidden');
-			});
-/*			});
-*/			expect(document.querySelector('body').classList.value).toBe("menu-hidden");
+			expect(document.querySelector('body').classList.value).toBe("");
+		});
+		it('or hidden', () => {
 
+			menuIcon.click(function() {
+				body.toggleClass('menu-hidden');
+			});
+			expect(document.querySelector('body').classList.value).toBe("menu-hidden");
 		});
 	});
 
