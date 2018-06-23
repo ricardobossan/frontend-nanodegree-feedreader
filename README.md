@@ -56,4 +56,20 @@ _It will create an `eslintrc.json` file, which will contain the configurations f
 
 * If you want to create special eslint configurations for a project, just move to that project's directory run `eslint --init`, to configure a `eslintrc.json` file there
 
+## Gulp Configuration
+
+* On the command line run:
+
+```
+touch gulpfile.js
+```
+
+* Get the configuration from the [Browsersync]() package:
+
+```
+
+```
+
+
+
 ## Running The Build Tool
