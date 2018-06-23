@@ -109,28 +109,37 @@ $(function() {
 		*/
 	describe('Initial Entries', () => {
 		beforeEach((done) => {
-			allFeeds.forEach(function(feed) {
-				loadFeed(0, done);
-			});
-		});
+/*			allFeeds.forEach(function(feed) {
+*/				loadFeed(0, done);
+/*			});
+*/		});
 		it('have at least one entry', () => {
-			console.log(document.querySelector('.feed'));
-/*			const feedElem = document.querySelector('.feed');
-*/			const entry = document.querySelectorAll('.entry');
-			expect(entry.length).toBeGreaterThan(0);
+			const entry = document.querySelectorAll('.entry');
+			expect(entry.length).toBeGreaterThan(1);
 		});
 	});
 	/* TODO: Write a new test suite named "New Feed Selection" */
-
 	/* TODO: Write a test that ensures when a new feed is loaded
 		* by the loadFeed function that the content actually changes.
 		* Remember, loadFeed() is asynchronous.
-		* I MADE EVERYTHING ON THE PAGE DARKER, SO THE BRIGHTNESS IN THE BROWSER WOULDN'T ANOY ME
-		IN THE END, IN THE `DIST` FOLDER, EITHER:
-		**, LOAD THE LAST SHA BEFORE MY FIRST COMMIT ON THE REPO
-		OR
-		** FOLLOW INSTRUCTIONS IN COMMENTS IN EACH OF THE FOLLOWING FILES, ALWAYS DELETING THE COMMENTS AFTERWARDS:
-		--- style.css
-		--- jasmine.css
-		*/
+	*/
+	describe('New Feed Selection', () => {
+		beforeEach((done) => {
+			loadFeed(0, done);
+		});
+		it('actually changes content', () => {
+			const entry = document.querySelectorAll('.entry');
+			expect(entry[0].children.item(0).outerHTML).not.toEqual(entry[1].children.item(0).outerHTML);
+		});
+	});
+
+	/*
+	* TODO: I MADE EVERYTHING ON THE PAGE DARKER, SO THE BRIGHTNESS IN THE BROWSER WOULDN'T ANOY ME
+	IN THE END, IN THE `DIST` FOLDER, EITHER:
+	**, LOAD THE LAST SHA BEFORE MY FIRST COMMIT ON THE REPO
+	OR
+	** FOLLOW INSTRUCTIONS IN COMMENTS IN EACH OF THE FOLLOWING FILES, ALWAYS DELETING THE COMMENTS AFTERWARDS:
+	--- style.css
+	--- jasmine.css
+	*/
 }());
