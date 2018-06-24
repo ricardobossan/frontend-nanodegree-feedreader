@@ -132,14 +132,4 @@ $(function() {
 			expect(entry[0].children.item(0).outerHTML).not.toEqual(entry[1].children.item(0).outerHTML);
 		});
 	});
-
-	/*
-	* TODO: I MADE EVERYTHING ON THE PAGE DARKER, SO THE BRIGHTNESS IN THE BROWSER WOULDN'T ANOY ME
-	IN THE END, IN THE `DIST` FOLDER, EITHER:
-	**, LOAD THE LAST SHA BEFORE MY FIRST COMMIT ON THE REPO
-	OR
-	** FOLLOW INSTRUCTIONS IN COMMENTS IN EACH OF THE FOLLOWING FILES, ALWAYS DELETING THE COMMENTS AFTERWARDS:
-	--- style.css
-	--- jasmine.css
-	*/
 }());
