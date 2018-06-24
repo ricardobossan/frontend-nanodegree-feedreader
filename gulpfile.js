@@ -15,7 +15,6 @@ gulp.task('default', () => {
 });
 
 gulp.task('dist', function() {
-	gulp.src('./src/**/*');
-	gulp.src('./*.md')
+	gulp.src(['./src/**/*','./*.md'])
 		.pipe(gulp.dest('./dist'));
 });
