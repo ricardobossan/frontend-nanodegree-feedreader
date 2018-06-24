@@ -99,7 +99,8 @@ Create the `dist` task, to move all non build files to the `dist` folder:
 
 ```
 gulp.task('dist', function() {
-	gulp.src('./src/**/*')
+	gulp.src('./src/**/*');
+	gulp.src('./*.md')
 		.pipe(gulp.dest('./dist'));
 });
 ```
@@ -117,3 +118,4 @@ $ gulp
 ```
 $ gulp dist
 ```
+

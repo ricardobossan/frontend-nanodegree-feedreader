@@ -1,4 +1,3 @@
-/*eslint-env node*/
 var gulp = require('gulp');
 var browsersync = require('browser-sync').create();
 
@@ -16,6 +15,7 @@ gulp.task('default', () => {
 });
 
 gulp.task('dist', function() {
-	gulp.src('./src/**/*')
+	gulp.src('./src/**/*');
+	gulp.src('./*.md')
 		.pipe(gulp.dest('./dist'));
 });
