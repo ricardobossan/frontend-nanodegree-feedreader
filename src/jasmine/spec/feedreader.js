@@ -1,4 +1,8 @@
-/* feedreader.js
+/*
+ * @desc this file...
+ * @autor Ricardo Bossan ricardobossan@gmail.com
+ *
+ * feedreader.js
  *
  * This is the spec file that Jasmine will read and contains
  * all of the tests that will be run against your application.
@@ -26,11 +30,6 @@ $(function() {
 			expect(allFeeds.length).not.toBe(0);
 		});
 
-
-		/* TODO: Write a test that loops through each feed
-		* in the allFeeds object and ensures it has a URL defined
-		* and that the URL is not empty.
-		*/
 		describe('have', () => {
 			allFeeds.forEach(function(aFeed){
 				describe(`in this feed`, () => {
@@ -44,11 +43,6 @@ $(function() {
 			});
 		});
 
-
-		/* TODO: Write a test that loops through each feed
-		* in the allFeeds object and ensures it has a name defined
-		* and that the name is not empty.
-		*/
 		describe('have', () => {
 			allFeeds.forEach(function(aFeed){
 				describe(`in this feed`, () => {
@@ -63,13 +57,6 @@ $(function() {
 		});
 	});
 
-
-	/* TODO: Write a new test suite named "The menu" */
-	/* TODO: Write a test that ensures the menu element is
-		* hidden by default. You'll have to analyze the HTML and
-		* the CSS to determine how we're performing the
-		* hiding/showing of the menu element.
-		*/
 	describe('The Menu', () => {
 		const slideClassDiv = document.querySelector('.slide-menu');
 		var menuIcon = document.querySelector('.menu-icon-link');
@@ -78,58 +65,45 @@ $(function() {
 			expect(window.getComputedStyle(slideClassDiv).transform).toEqual("matrix(1, 0, 0, 1, -192, 0)");
 			expect(window.getComputedStyle(slideClassDiv).transition).toContain("transform 0.2s");
 		});
-		/* TODO: Write a test that ensures the menu changes
-			* visibility when the menu icon is clicked. This test
-			* should have two expectations: does the menu display when
-			* clicked and does it hide when clicked again.
-			*/
-		it('when clicked, is either displayed', () => {
-			menuIcon.click(function() {
-				body.toggleClass('menu-hidden');
-			});
+		it('when clicked, is either displayed or hidden', () => {
+			/*
+			 * function for clicking on the menu button
+			 */
+			var click = () => {
+				menuIcon.click(function() {
+					body.toggleClass('menu-hidden');
+				});
+			};
+			// checks if menu opens when clicked
+			click();
 			expect(document.querySelector('body').classList.value).toBe("");
-		});
-		it('or hidden', () => {
-
-			menuIcon.click(function() {
-				body.toggleClass('menu-hidden');
-			});
+			// checks if menu closes when clicked
+			click();
 			expect(document.querySelector('body').classList.value).toBe("menu-hidden");
 		});
 	});
 
-
-	/* TODO: Write a new test suite named "Initial Entries" */
-
-	/* TODO: Write a test that ensures when the loadFeed
-		* function is called and completes its work, there is at least
-		* a single .entry element within the .feed container.
-		* Remember, loadFeed() is asynchronous so this test will require
-		* the use of Jasmine's beforeEach and asynchronous done() function.
-		*/
 	describe('Initial Entries', () => {
 		beforeEach((done) => {
-/*			allFeeds.forEach(function(feed) {
-*/				loadFeed(0, done);
-/*			});
-*/		});
+			loadFeed(0, done);
+		});
 		it('have at least one entry', () => {
+			const feed = document.querySelectorAll('.feed');
 			const entry = document.querySelectorAll('.entry');
-			expect(entry.length).toBeGreaterThan(1);
+			/*
+			 * expects the first node in the feed class node list to contain the child node to have a class value that equals "entry"
+			 */
+			expect($(".feed article")[0].classList.value).toEqual('entry');
 		});
 	});
-	/* TODO: Write a new test suite named "New Feed Selection" */
-	/* TODO: Write a test that ensures when a new feed is loaded
-		* by the loadFeed function that the content actually changes.
-		* Remember, loadFeed() is asynchronous.
-	*/
 	describe('New Feed Selection', () => {
 		beforeEach((done) => {
 			loadFeed(0, done);
 		});
-		it('actually changes content', () => {
+		it('actually changes content', (done) => {
 			const entry = document.querySelectorAll('.entry');
-			expect(entry[0].children.item(0).outerHTML).not.toEqual(entry[1].children.item(0).outerHTML);
+			loadFeed(1, done);
+			expect($(".feed article")[0].children[0].outerHTML).toEqual($(".feed article")[1].children[0].outerHTML);
 		});
 	});
 }());
