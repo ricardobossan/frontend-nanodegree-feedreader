@@ -103,7 +103,7 @@ $(function() {
 		it('actually changes content', (done) => {
 			const entry = document.querySelectorAll('.entry');
 			loadFeed(1, done);
-			expect($(".feed article")[0].children[0].outerHTML).toEqual($(".feed article")[1].children[0].outerHTML);
+			expect($(".feed article")[0].children[0].outerHTML).not.toEqual($(".feed article")[1].children[0].outerHTML);
 		});
 	});
 }());
