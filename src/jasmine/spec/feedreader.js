@@ -47,10 +47,10 @@ $(function() {
 			allFeeds.forEach(function(aFeed){
 				describe(`in this feed`, () => {
 					it('an name defined', () => {
-						expect(Object.keys(aFeed)).toContain('url');
+						expect(aFeed.name).not.toBe('');
 					});
 					it('and that the name is not empty', () => {
-						expect(Object.values(aFeed)[0]).toEqual(jasmine.any(String));
+						expect(aFeed.name.length).not.toBe(0);
 					});
 				});
 			});
@@ -66,20 +66,16 @@ $(function() {
 			expect(window.getComputedStyle(slideClassDiv).transition).toContain("transform 0.2s");
 		});
 		it('when clicked, is either displayed or hidden', () => {
-			/*
-			 * function for clicking on the menu button
-			 */
-			var click = () => {
-				menuIcon.click(function() {
-					body.toggleClass('menu-hidden');
-				});
-			};
-			// checks if menu opens when clicked
-			click();
-			expect(document.querySelector('body').classList.value).toBe("");
-			// checks if menu closes when clicked
-			click();
-			expect(document.querySelector('body').classList.value).toBe("menu-hidden");
+
+			// checks if menu starts hidden
+			expect(body.classList.value).toBe("menu-hidden");
+			menuIcon.click();
+			// checks if menu is opened, when clicked
+			expect(body.classList.value).toBe("");
+			menuIcon.click();
+			// checks if menu is closed again when clicked one more time
+			expect(body.classList.value).toBe("menu-hidden");
+
 		});
 	});
 
@@ -88,12 +84,13 @@ $(function() {
 			loadFeed(0, done);
 		});
 		it('have at least one entry', () => {
-			const feed = document.querySelectorAll('.feed');
-			const entry = document.querySelectorAll('.entry');
-			/*
+			const feed = document.querySelector('.feed');
+			const articles = feed.querySelectorAll('article');
+/*			const entry = document.querySelectorAll('.entry');
+*/			/*
 			 * expects the first node in the feed class node list to contain the child node to have a class value that equals "entry"
 			 */
-			expect($(".feed article")[0].classList.value).toEqual('entry');
+			expect(articles[0].classList.value).toBe('entry');
 		});
 	});
 	describe('New Feed Selection', () => {
