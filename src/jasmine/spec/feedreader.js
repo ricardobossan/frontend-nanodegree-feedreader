@@ -1,30 +1,11 @@
-/*
- * @desc this file...
- * @autor Ricardo Bossan ricardobossan@gmail.com
- *
- * feedreader.js
- *
- * This is the spec file that Jasmine will read and contains
- * all of the tests that will be run against your application.
+/**
+ * @file feedreader.js: Tests for the app.js logic
+ * @autor Ricardo Bossan <ricardobossan@gmail.com>
  */
 
-/* We're placing all of our tests within the $() function,
- * since some of these tests may require DOM elements. We want
- * to ensure they don't run until the DOM is ready.
- */
 $(function() {
-	/* This is our first test suite - a test suite just contains
-	* a related set of tests. This suite is all about the RSS
-	* feeds definitions, the allFeeds variable in our application.
-	*/
 	describe('RSS Feeds', () => {
-		/* This is our first test - it tests to make sure that the
-		* allFeeds variable has been defined and that it is not
-		* empty. Experiment with this before you get started on
-		* the rest of this project. What happens when you change
-		* allFeeds in app.js to be an empty array and refresh the
-		* page?
-		*/
+
 		it('are defined', () => {
 			expect(allFeeds).toBeDefined();
 			expect(allFeeds.length).not.toBe(0);
@@ -75,7 +56,6 @@ $(function() {
 			menuIcon.click();
 			// checks if menu is closed again when clicked one more time
 			expect(body.classList.value).toBe("menu-hidden");
-
 		});
 	});
 
@@ -86,21 +66,20 @@ $(function() {
 		it('have at least one entry', () => {
 			const feed = document.querySelector('.feed');
 			const articles = feed.querySelectorAll('article');
-/*			const entry = document.querySelectorAll('.entry');
-*/			/*
-			 * expects the first node in the feed class node list to contain the child node to have a class value that equals "entry"
-			 */
 			expect(articles[0].classList.value).toBe('entry');
 		});
 	});
+
 	describe('New Feed Selection', () => {
+		let entry;
 		beforeEach((done) => {
-			loadFeed(0, done);
+			loadFeed(0, () => {
+				entry = document.querySelector('.feed').innerHTML;
+				loadFeed(1, done);
+			});
 		});
-		it('actually changes content', (done) => {
-			const entry = document.querySelectorAll('.entry');
-			loadFeed(1, done);
-			expect($(".feed article")[0].children[0].outerHTML).not.toEqual($(".feed article")[1].children[0].outerHTML);
+		it('actually changes content', () => {
+			expect(entry).not.toEqual(document.querySelector('.feed').innerHTML);
 		});
 	});
 }());
