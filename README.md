@@ -1,5 +1,13 @@
 # Project: Front-End Nanodegree Feed Reader
 
+## Funcionality
+
+Feed Reader site made for implementing TDD with Jasmine.
+
+## Running the Feed Reader
+
+Double-click or press enter on `./src/index.html`. Then click on the feed to navigate to them. The tests are visible at the bottom of the page.
+
 ## Building The Project With a Building Tool
 
 #### Node.js and Npm (Node Package Manager)
