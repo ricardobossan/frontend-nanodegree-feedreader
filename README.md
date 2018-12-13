@@ -1,5 +1,7 @@
 # Project: Front-End Nanodegree Feed Reader
 
+![Page View][0]
+
 ## Funcionality
 
 Feed Reader site made for implementing TDD with Jasmine.
@@ -127,3 +129,4 @@ $ gulp
 $ gulp dist
 ```
 
+[0]:/app.png
