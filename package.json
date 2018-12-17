@@ -16,8 +16,15 @@
     "url": "https://github.com/ricardobossan/frontend-nanodegree-reedreader/issues"
   },
   "homepage": "https://github.com/ricardobossan/frontend-nanodegree-reedreader#readme",
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
+  },
   "devDependencies": {
     "browsersync": "0.0.1-security",
     "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
